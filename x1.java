@@ -31,7 +31,7 @@ void draw() {
   rect(300, 60, 60, 60 ); //house
   triangle(300, 60, 330, 30, 360, 60 ); //roof
   fill( 100, 200, 100 );
-  triangle( 150, horizon, 120, horizon-100, 180, horizon-100  );  // tree
+  triangle( 130,80, 160, horizon-100, 190, 80  );  // tree
   fill( 150, 50, 0);
   rect( 136, horizon-50, 28, 50);
 
