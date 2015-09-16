@@ -5,7 +5,7 @@
 float x, y;       // Position of creature.
 float dx, dy;     // Speed.
 float horizon;
-
+float sunX, sunY; //Sun speed.
 //// SETUP:  window size, initialization (start in middle of screen).
 void setup() {
   size( 640, 480);
@@ -14,19 +14,24 @@ void setup() {
   y=  height/2;
   dx=  3;
   dy=  2;
+ sunX= width*3/4;
+ sunY= height/8;
 }
 
 //// NEXT FRAME:  scene, action, show.
 void draw() {
   //// SCENE:  sky, sun, tree, house, etc.
-  background( 60, 140, 140 );                // sky
-  fill( 255, 255, 0);
-  ellipse( dx+420, dy+40, 40, 40 );    // sun
-  // Grass
+  background( 170, 236, 255 );                // sky
+  fill( 252, 240, 166);
+ 
+  ellipse( sunX, sunY, 55, 55 );    // sun
+  
+  sunX= (sunX + 1) % (width+100);  //sun speed + position
+  sunY =(sunY + .15) % horizon;
+  
   fill( 100, 200, 100 );
   rect( 0, horizon, width, height*3/4 );      // grass.
 
-  /* INSERT YOUR CODE HERE! */
   fill(144, 87, 173); 
   rect(300, 60, 60, 60 ); //house
   fill(165, 115, 53); 
@@ -34,8 +39,8 @@ void draw() {
   fill(165, 115, 53);
   triangle(300, 60, 330, 30, 360, 60 ); //house roof 
   fill(255);
-  rect( 305, 69, 15, 15);
-  rect( 339, 69, 15, 15);
+  rect( 305, 69, 15, 15);  //tree trunk
+  rect( 339, 69, 15, 15);  //tree trunk2
   fill( 100, 200, 100 );
   triangle( 130,80, 160, horizon-100, 190, 80  ); //tree
   fill( 100, 200, 100 ); 
@@ -57,7 +62,7 @@ void draw() {
   fill(219, 143, 49);
   ellipse( x+12.5, y-12, 25, 25); //Aoi's head
   fill(116, 78, 96); 
-  rect( x, y, 25, 45 );   //Aoi's body   
+  rect( x, y, 25, 40 );   //Aoi's body   
   rect(x-7, y+1, 7, 20); //Aoi's arm left
   rect(x+25, y+1, 7, 20); //Aoi's arm right
   fill(0);
@@ -66,7 +71,7 @@ void draw() {
   line(x+6, y-13, x+19, y-13); //Aoi's glasses frame
   fill(255);
   arc(x+12.5, y-6, 10, 10, 0, PI); //His mouth
-  text( "Aoi", x+3, y+25 ); //His name!
+  text( "Bry", x+3, y+24 ); //His name!
   
 }
 
